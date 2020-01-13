@@ -11,6 +11,7 @@ export class LoginPageComponent implements OnInit {
 loginform:any
 forgetvar:any
 forstatus:boolean=false
+invalid:boolean=false
   constructor(private fb:FormBuilder,private transporter:TransporterService,private router:Router) {
     this.loginform=fb.group({
      username:['',Validators.compose([Validators.required])],
@@ -22,6 +23,7 @@ forstatus:boolean=false
   }
 
 login(data){
+  this.invalid=false
   if(data){
     var login=this.transporter.register.filter((obj:any)=>{
       return obj.name==data.username && obj.password==data.password
@@ -29,7 +31,9 @@ login(data){
     if(login.length>0){
       this.router.navigate(['/dashboard'],{queryParams:{login:JSON.stringify(data)}})
     }
-    else{}
+    else{
+      this.invalid=true
+    }
   }
 }
 

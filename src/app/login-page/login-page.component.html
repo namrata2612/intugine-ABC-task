@@ -1,8 +1,14 @@
 <div class="login">
   <h1>Login</h1>
+  <small>*Kindly register user first, then login using those credentials </small>
+  <div class="invalid">
+    <div class="alert alert-danger" role="alert" *ngIf="invalid">
+      <small>Invalid credentials</small>
+    </div>
+  </div>
   <form class="log" [formGroup]="loginform" (ngSubmit)="login(loginform.value)">
-    Username <input type="text"  formControlName="username" value=""><br><br>
-    Password <input type="password" formControlName="password" value=""><br><br>
+    Username <input type="text"  formControlName="username" value="" required><br><br>
+    Password <input type="password" formControlName="password" value="" required><br><br>
     <div class="btn">
       <button class="btn btn-primary" type="submit" name="button" [disabled]="!loginform.valid">Login</button>&nbsp;&nbsp;
       <a routerLink='/register'>Sign Up</a>
