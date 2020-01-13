@@ -1,0 +1,33 @@
+<div class="register">
+  <h1>Register</h1>
+  <form class="log" [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)" >
+    <table>
+      <tr>
+        <th> Name </th>
+      <td><input type="text" formControlName="name" value=""></td>
+      </tr><br>
+      <tr>
+        <th> Email </th>
+      <td><input type="email" formControlName="email" value=""></td>
+      </tr><br>
+      <tr>
+        <th> Contact </th>
+      <td><input type="number" formControlName="contact" value=""></td>
+      </tr><br>
+      <tr>
+        <th> Date of Birth </th>
+      <td><input type="date" formControlName="dob" value=""></td>
+      </tr><br>
+      <tr>
+        <th> Password </th>
+      <td><input type="password" formControlName="password" value=""></td>
+      </tr>
+    </table><br>
+  <div class="buttongrp">
+    <button class="btn btn-primary" type="submit" name="button">Sign Up</button>&nbsp;&nbsp;
+    <a routerLink='/login-page'>Sign In</a>
+  </div>
+
+  </form>
+
+</div>

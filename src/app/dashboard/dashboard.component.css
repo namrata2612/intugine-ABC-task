@@ -1,0 +1,112 @@
+.rounded-circle {
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid #7b7676;
+
+}
+
+ .flex {
+     display: flex;
+ }
+.card-title.card1 {
+    display: flex;
+}
+.card-title-note {
+    display: flex;
+    float: left;
+}
+span.icon {
+    padding: 0 1rem;
+}
+
+element.style {
+}
+.label-display {
+    text-align: initial;
+}
+.card-in {
+    position: absolute;
+    right: 0;
+}
+.card {
+    width: 40rem;
+    box-shadow: 1px 1px 1px 1px #c1bbbb;
+    border-radius: 0.6rem;
+}
+.card-out{
+    text-align: -webkit-center;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+.card-intext {
+    text-align: left;
+}
+input[type="text"] {
+    border: transparent;
+}
+.icongroup {
+    position: absolute;
+    right: 35px;
+}
+button {
+    border: none;
+    background-color: transparent;
+}
+.card.note {
+    width: 20rem;
+}
+.title-pin {
+    display: flex;
+    justify-content: space-between;
+}
+.title-head{
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.allcard {
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+}
+.color-card {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem;
+    margin-left: -11rem;
+}
+.colors {
+column-count: 5
+}
+.center {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+.text {
+    float: left;
+}
+
+
+li {
+    margin-left: 40rem;
+    list-style-type: none;
+    text-align: justify;
+
+}
+.card2 {
+    border: transparent;
+    box-shadow: 1px 1px 1px 1px #e2dede;
+    border-radius: 0.5rem;
+    width: 15rem;
+}
+.card-out2 {
+
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+.card-intext2 {
+    margin: 1rem;
+}

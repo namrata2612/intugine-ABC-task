@@ -1,0 +1,22 @@
+<div class="login">
+  <h1>Login</h1>
+  <form class="log" [formGroup]="loginform" (ngSubmit)="login(loginform.value)">
+    Username <input type="text"  formControlName="username" value=""><br><br>
+    Password <input type="password" formControlName="password" value=""><br><br>
+    <div class="btn">
+      <button class="btn btn-primary" type="submit" name="button" [disabled]="!loginform.valid">Login</button>&nbsp;&nbsp;
+      <a routerLink='/register'>Sign Up</a>
+
+    </div>
+  </form>
+
+<div class="pwd">
+  <a (click)="forget()">Forget password</a>
+</div>
+<div *ngIf="forstatus">
+  <br><br>
+  Enter your Email
+  <input type="text" [(ngModel)]='forgetvar'   placeholder="Email"> <br> <br>
+  <button class=" btn-primary" type="submit" name="button" (click)='clickbutton()'>Submit</button>
+</div>
+</div>

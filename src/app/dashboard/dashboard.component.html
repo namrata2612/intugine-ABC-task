@@ -1,0 +1,194 @@
+<div [ngSwitch]="status">
+<div *ngSwitchCase="0">
+    <div class="card-out">
+      <div class="card" >
+        <div class="card-body">
+          <div class="card-title card1" >
+            <span (click)="textarea(1)">Take a Note</span>
+            <div class="card-in">
+              <span class="icon" (click)="textarea(2)" ><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-paint-brush" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div *ngSwitchCase="1">
+    <div class="card-out">
+      <div class="card" [ngStyle]="{'background-color':selectesColor==''?'white':selectesColor}">
+        <div class="card-body">
+          <div class="card-intext">
+            <input type="text" name="" [(ngModel)]="titleText" value="" placeholder="Title"><br><br>
+            <input type="text" name="" [(ngModel)]="noteText"  value="" placeholder="Take a Note">
+          </div>
+          <br>
+          <div class="flex">
+            <div class="card-title card1" >
+              <span class="icon"><i class="fa fa-bell" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+              <span class="icon" (click)="colorShow()"><i class="fa fa-paw" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-download" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-reply" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-share" aria-hidden="true"></i></span>
+              <div class="icon " (click)="menulist()"><i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </div>
+            <div class="icongroup">
+                <button type="submit" name="button"(click)="submitText()">Submit</button>
+                <button type="submit" name="button"(click)="textarea(0)">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div class="color-card" *ngIf="colorShowStatus">
+  <div class="colors">
+    <div class="circle" *ngFor="let a of color">
+      <span class="rounded-circle" [ngStyle]="{'background-color':a,'color':'transparent'}" (click)="colorchange(a)" >aa</span>
+    </div>
+  </div>
+</div>
+
+  <div *ngIf="menustatus">
+    <div class="card-out1">
+      <div class="card-menu-list">
+        <ul>
+          <span class="dropdown-item" (click)="addlabel()"><li>Add Label</li></span>
+          <span class="dropdown-item"><li>Add Drawings</li></span>
+          <span class="dropdown-item"><li>Show Checkboxes</li></span>
+        </ul>
+      </div>
+    </div>
+    </div>
+  <div *ngSwitchCase="2">
+    <div class="card-out">
+      <div class="card" >
+        <div class="card-body">
+          <div class="card-intext">
+            <input type="text" value="" placeholder="Title"><hr><br><br>
+            <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+            <input type="text" value="" placeholder="List item"><hr>
+          </div>
+          <br>
+          <div class="flex">
+            <div class="card-title card1" >
+              <span class="icon"><i class="fa fa-bell" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+              <span class="icon" (click)="colorShow()"><i class="fa fa-paw" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-download" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-reply" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-share" aria-hidden="true"></i></span>
+            </div>
+            <div class="icongroup">
+                <button type="submit" name="button">Submit</button>
+                <button type="submit" name="button"(click)="textarea(0)">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="addlabelstatus">
+  <div class="card-out2">
+    <div class="card2" >
+      <div class="card-body2">
+        <div class="card-intext2">
+          <h6 class="card-title2">Label note</h6>
+          <input type="text" value="" placeholder="Enter label name"[(ngModel)]="labelcreate" (keyup)="createlable($event)">
+          <span><i class="fa fa-search" aria-hidden="true"></i></span>
+        </div><br>
+        <div *ngIf="labeltextStatus">
+          <div *ngFor="let a of labeltext">
+            <input type="checkbox" name="" value=""><span>{{a.label}}</span>
+          </div>
+        </div>
+        <div *ngIf="inputstatus">
+          <hr>
+            <button class="icon" (click)=collect()><i class="fa fa-plus" aria-hidden="true"></i>  create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h3 *ngIf="pinStatus">Pinned</h3>
+<div class="allcard" *ngIf="recordStatus">
+  <div class="card-out" *ngFor="let a of records[0].note;let i = index">
+    <div *ngIf="a.pin==1">
+      <div class="card note" [ngStyle]="{'background-color':a.color}">
+        <div class="card-body">
+          <div class="card-title1">
+            <div class="title-pin">
+              <h5 class="card-title">{{a.title}}</h5>
+              <span *ngIf="a.pin==1">
+                <i class="fa fa-thumb-tack" aria-hidden="true" (click)="pin(0,i)"></i>
+              </span >
+              <span *ngIf="a.pin==0">
+                <i class="fa fa-thermometer-quarter" aria-hidden="true" (click)="pin(1,i)"></i>
+              </span>
+            </div>
+            <br>
+            <div >
+              <span class="text">{{a.label}}</span>
+            </div> <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="allcard" *ngIf="recordStatus">
+  <div class="card-out" *ngFor="let a of records[0].note;let i = index">
+    <div *ngIf="a.pin==0">
+      <div class="card note" [ngStyle]="{'background-color':a.color}">
+        <div class="card-body">
+          <div class="card-title1">
+            <div class="title-pin">
+               <h5 class="card-title">{{a.title}}</h5>
+
+              <span *ngIf="a.pin==1">
+                <i class="fa fa-thumb-tack" aria-hidden="true" (click)="pin(0,i)"></i>
+              </span >
+              <span *ngIf="a.pin==0">
+                <i class="fa fa-thermometer-quarter" aria-hidden="true" (click)="pin(1,i)"></i>
+              </span>
+            </div>
+            <br>
+            <div class="label-display">
+              <span>{{a.label}}</span>
+            </div>
+            <div class="label-display" *ngFor="let b of records[0].note[i].addLabel;let i = index">
+              <small>{{b.label}}</small>
+            </div>
+            <div *ngIf="labeltextStatus" class="label-display">
+              <div *ngFor="let b of labeltext ">
+                <input type="checkbox"   (change)="changeStatusLabel(b,i,$event)">{{b.label}}<br>
+              </div>
+            </div>
+            <div class="card-title-note " >
+              <span class="icon"><i class="fa fa-bell" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+              <span class="icon" (click)="colorShow()"><i class="fa fa-paw" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-download" aria-hidden="true"></i></span>
+              <div class="icon "><i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
